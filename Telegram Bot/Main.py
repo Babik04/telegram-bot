@@ -10,14 +10,18 @@ BOT_TOKEN = '8186449348:AAFzynzScg5PgxF3d7TXjp_Nh8rmJX5PoJU'
 # Твій Telegram ID
 OWNER_ID = 835641047
 
+# 👉 Створюємо клавіатуру
+keyboard = ReplyKeyboardMarkup(
+    [["🛒 Зробити замовлення"]],
+    resize_keyboard=True
+)
 
 # Команда /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Привіт! 👋\n\n Натисни кнопку нижче або просто напиши, що б ти хотів бачити в магазині 🍞",
-        reply_markup=keyboard
+        "Привіт! 👋\n\nНатисни кнопку нижче або просто напиши, що б ти хотів бачити в магазині 🍞",
+        reply_markup=keyboard  # ← Тепер ця змінна визначена вище
     )
-
 
 # Обробка повідомлень
 async def forward_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -39,4 +43,3 @@ if __name__ == '__main__':
 
     print("Бот із кнопкою працює! ✅")
     app.run_polling()
-
