@@ -1,19 +1,17 @@
-from telegram import Update
+from telegram import Update, ReplyKeyboardRemove
 from telegram.ext import (
     ApplicationBuilder, MessageHandler, CommandHandler,
     filters, ContextTypes
 )
 
-# Твій токен бота
 BOT_TOKEN = '8186449348:AAFzynzScg5PgxF3d7TXjp_Nh8rmJX5PoJU'
-
-# Твій Telegram ID
 OWNER_ID = 835641047
 
-# Команда /start
+# /start команда з видаленням клавіатури
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Привіт! 👋\n\nПросто напиши, що б ти хотів бачити в магазині 🍞"
+        "Привіт! 👋\n\nПросто напиши, що б ти хотів бачити в нашому магазині 🍞",
+        reply_markup=ReplyKeyboardRemove()
     )
 
 # Обробка повідомлень
@@ -25,7 +23,7 @@ async def forward_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = f"📬 Нова пропозиція від {sender_name}:\n\n{message_text}"
 
     await context.bot.send_message(chat_id=OWNER_ID, text=text)
-    await update.message.reply_text("Дякую, ваше повідомлення надіслано! ✅")
+    await update.message.reply_text("Дякую, вашу відповідь успішно відправили! ✅")
 
 # Запуск бота
 if __name__ == '__main__':
