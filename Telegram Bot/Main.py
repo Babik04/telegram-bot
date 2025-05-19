@@ -1,4 +1,4 @@
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import Update
 from telegram.ext import (
     ApplicationBuilder, MessageHandler, CommandHandler,
     filters, ContextTypes
@@ -10,17 +10,10 @@ BOT_TOKEN = '8186449348:AAFzynzScg5PgxF3d7TXjp_Nh8rmJX5PoJU'
 # Твій Telegram ID
 OWNER_ID = 835641047
 
-# 👉 Створюємо клавіатуру
-keyboard = ReplyKeyboardMarkup(
-    [["🛒 Зробити замовлення"]],
-    resize_keyboard=True
-)
-
 # Команда /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Привіт! 👋\n\nНатисни кнопку нижче або просто напиши, що б ти хотів бачити в магазині 🍞",
-        reply_markup=keyboard  # ← Тепер ця змінна визначена вище
+        "Привіт! 👋\n\nПросто напиши, що б ти хотів бачити в магазині 🍞"
     )
 
 # Обробка повідомлень
@@ -34,12 +27,12 @@ async def forward_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=OWNER_ID, text=text)
     await update.message.reply_text("Дякую, ваше повідомлення надіслано! ✅")
 
-
+# Запуск бота
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, forward_message))
 
-    print("Бот із кнопкою працює! ✅")
+    print("Бот працює без кнопки ✅")
     app.run_polling()
