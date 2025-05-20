@@ -4,7 +4,7 @@ from telegram.ext import (
     filters, ContextTypes
 )
 
-BOT_TOKEN = '8186449348:AAFzynzScg5PgxF3d7TXjp_Nh8rmJX5PoJU'
+BOT_TOKEN = '7726484416:AAG1nnF9NeY3V16ag_RpJpeDh9oomx6VkIE'
 OWNER_ID = 835641047
 
 # /start команда з видаленням клавіатури
