@@ -10,7 +10,7 @@ OWNER_ID = 835641047
 # /start команда з видаленням клавіатури
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Привіт! 👋\n\nПросто напиши, що б ти хотів бачити в нашому магазині 🍞",
+        "Привіт! 👋\n\nНапиши, що б ти хотів(ла) бачити в нашому магазині 🍞",
         reply_markup=ReplyKeyboardRemove()
     )
 
@@ -23,7 +23,7 @@ async def forward_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = f"📬 Нова пропозиція від {sender_name}:\n\n{message_text}"
 
     await context.bot.send_message(chat_id=OWNER_ID, text=text)
-    await update.message.reply_text("Дякую, вашу відповідь успішно відправили! ✅")
+    await update.message.reply_text("✅ Ваше повідомлення було успішно відправлено!")
 
 # Запуск бота
 if __name__ == '__main__':
